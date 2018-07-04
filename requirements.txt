@@ -1,3 +1,6 @@
-dnspython
-Flask
 gunicorn
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+psycopg2
+dnspython
