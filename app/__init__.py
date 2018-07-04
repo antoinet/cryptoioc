@@ -1,4 +1,5 @@
 import os
+import dns.resolver
 
 from flask import Flask
 
@@ -14,3 +15,9 @@ except OSError:
 def hello():
     return 'Hello, World!'
 
+@app.route('/resolve/<domain>')
+def resolve(domain):
+    result = dns.resolver.query(domain, 'A')
+    ips = [str(ip) for ip in result]
+    app.logger.error(repr(result) + 'length: %s', len(ips))
+    return 'resolving %s...<br/>' % domain + '<br/>'.join(ips)
