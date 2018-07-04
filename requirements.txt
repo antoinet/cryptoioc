@@ -2,5 +2,6 @@ gunicorn
 Flask
 Flask-SQLAlchemy
 Flask-Migrate
+Flask-Heroku
 psycopg2
 dnspython
