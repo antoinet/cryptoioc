@@ -6,7 +6,7 @@ import json
 
 rules = {}
 reverse_rules = {}
-with open('pools.csv', 'rb') as csvfile:
+with open('pools.csv', 'r') as csvfile:
     poolreader = csv.reader(csvfile, delimiter=',')
     for row in poolreader:
         domain = row[0]
@@ -22,13 +22,13 @@ with open('pools.csv', 'rb') as csvfile:
             reverse_rules[key] = "currency: %s, pool: %s:%s" % (currency, domain, port)
  
 for k in rules.keys():
-    print '=== ' + k
-    print " or\n".join(rules[k])
-    print
+    print('=== ' + k)
+    print(" or\n".join(rules[k]))
+    print()
 
-print
-print "-------------"
-print
+print()
+print("-------------")
+print()
 
-print json.dumps(reverse_rules, indent=4, separators=(',', ': '))
+print(json.dumps(reverse_rules, indent=4, separators=(',', ': ')))
 
