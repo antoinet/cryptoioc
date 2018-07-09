@@ -32,7 +32,6 @@ def update_dns():
         ips = ','.join(get_ips_for_domain(domain))
         dns = DnsCache(domain=domain, ips=ips)
         stored_dns = DnsCache.get_by_domain(domain)
-        cache_miss = False
         if stored_dns is None or stored_dns != dns:
             dns.save()
 

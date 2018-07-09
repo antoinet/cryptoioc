@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% set active_page = 'browse' %}
+{% block header %}Browse{% endblock %}
+
+{% block content %}
+      <h1 class="mt-5">CryptoIOC Database</h1>
+      <p>Here you can see the actual IP/port pairs used for cryptomining pool connections. If you are looking for a
+      parsable list of the dataset, you might want to check out
+        <a href="{{ url_for('api') }}" target="_parent" title="CryptoIOC API">the CryptoIOC API</a>.
+      </p>
+      <p>There are currently {{ count }} listed mining pools on CryptoIOC.</p>
+
+      <table class="table table-sm table-hover table-bordered">
+            <thead>
+                  <tr>
+                        <th>Domain Name</th>
+                        <th>IP Address</th>
+                        <th>TCP Port</th>
+                        <th>Currency</th>
+                        <th>Comments</th>
+                        <th>Last Updated</th>
+                  </tr>
+            </thead>
+            <tbody>
+                  {% for p in pools %}
+                  {% for ip in p.dns_cache.ips.split(',') %}
+                  <tr>
+                        <td>{{ p.domain }}</td>
+                        <td>{{ ip }}</td>
+                        <td>{{ p.port }}</td>
+                        <td>{{ p.currency|upper }}</td>
+                        <td>{{ p.comment }}</td>
+                        <td>{{ p.dns_cache.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                  </tr>
+                  {% endfor %}
+                  {% endfor %}
+            </tbody>
+      </table>
+{% endblock%}
