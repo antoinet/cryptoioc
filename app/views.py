@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import json
 from app import app
+from app.models import Pool
 
 @app.route('/hello')
 def hello():
     return 'Hello, World!'
+
 
 @app.route('/resolve/<domain>')
 def resolve(domain):
@@ -14,14 +17,18 @@ def resolve(domain):
     app.logger.error(repr(result) + 'length: %s', len(ips))
     return 'resolving %s...<br/>' % domain + '<br/>'.join(ips)
 
+
 @app.route('/test')
 def test():
+    pools = Pool.read_pools('pools.csv')
     result = []
-    with open('pools.csv', 'r') as f:
-        reader = csv.reader(f, delimiter=',')
-        for row in reader:
-            domain,port,currency,comment = row
-            answers = dns.resolver.query(domain, 'A')
-            ips = [str(ip) for ip in answers]
-            result.append("%s: %s" % (domain, ','.join(ips)))
-    return '<br/>'.join(result)
+    for pool in pools:
+        result.append({
+            'domain': pool.domain,
+            'port': pool.port,
+            'currency': pool.currency,
+            'comment': pool.comment,
+            'ips': pool.dns_cache.ips.split(','),
+            'timestamp': pool.dns_cache.timestamp.strftime('%Y-%m-%d %H:%M:%s')
+        })
+    return json.dumps(result), 200, {'Content-Type': 'application/json; charset=utf-8'}
