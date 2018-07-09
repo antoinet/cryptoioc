@@ -22,7 +22,7 @@ def resolve(domain):
 def test():
     pools = Pool.read_pools('pools.csv')
     result = []
-    for pool in pools:
+    for pool in [x for x in pools if x.dns_cache]:
         result.append({
             'domain': pool.domain,
             'port': pool.port,
