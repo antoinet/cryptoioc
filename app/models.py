@@ -78,11 +78,14 @@ class Pool(object):
 
 
     @staticmethod
-    def read_pools(filename):
+    def read_pools(filename, cached_only=True):
         pools = []
         with open(filename, 'r') as f:
             reader = csv.reader(f, delimiter=',')
             for row in reader:
                 domain, port, currency, comment = row
                 pools.append(Pool(domain, port, currency, comment))
-        return [x for x in pools if x.dns_cache]
+        if cached_only:
+            return [x for x in pools if x.dns_cache]
+        else:
+            return pools

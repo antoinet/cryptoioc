@@ -21,7 +21,7 @@ def retrieve_domains():
     Returns the set of distinct domains from `pools.csv`.
     :return:
     """
-    pools = Pool.read_pools('pools.csv')
+    pools = Pool.read_pools('pools.csv', cached_only=False)
     return OrderedDict((x, True) for x in [p.domain for p in pools]).keys()
 
 
@@ -29,11 +29,14 @@ def update_dns():
     print("Retrieving DNS updates...")
     domains = retrieve_domains()
     for domain in domains:
+        print(domain, end='')
         ips = ','.join(get_ips_for_domain(domain))
         dns = DnsCache(domain=domain, ips=ips)
         stored_dns = DnsCache.get_by_domain(domain)
         if stored_dns is None or stored_dns != dns:
             dns.save()
+            print(' ... added', end='')
+        print()
 
 
 if __name__ == '__main__':
