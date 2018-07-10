@@ -4,5 +4,40 @@
 
 {% block content %}
     <h1 class="mt-5">CryptoIOC API</h1>
-    <p>Coming soon...</p>
+
+    <h3>Database dump (CSV)</h3>
+    <p>The CryptoIOC database dump is a simple CSV feed that contains all cryptominer pool IP address and port combinations currently known to CryptoIOC.
+    The CSV contains the following columns:</p>
+    <ul>
+        <li>Domain name</li>
+        <li>IP address</li>
+        <li>TCP port</li>
+        <li>Currency</li>
+        <li>Comments</li>
+        <li>Last updated</li>
+    </ul>
+    <p>The IP addresses contained in the databse dump are based on the DNS A records of known cryptominer pool domains. The addresses are resolved once per day.</p>
+    <p><a class="btn btn-primary" href="{{ url_for('api_csv') }}" title="download CryptoIOC database dump as CSV file" target="_parent" role="button">Download CSV</a></p>
+    <hr/>
+
+    <h3>NetFlow Profile</h3>
+    <p>If you are capturing NetFlows from your routers with e.g. <a href="https://github.com/phaag/nfdump" title="nfdump" target="_blank">nfdump</a>/<a href="http://nfsen.sourceforge.net/" title="NfSen" target="_blank">NfSen</a>
+    you may use the CryptoIOC NetFlow profile to identify network traffic towards known cryptomining pools. The CryptoIOC NetFlow profile is based on connections to IP addresses and ports of known cryptominer pools.</p>
+    <p>The IP addresses contained in the IDS ruleset are based on the DNS A records of known cryptominer pool domains. The addresses are resolved once per day.</p>
+    <p><a class="btn btn-primary" href="{{ url_for('api_netflow') }}" title="download CryptoIOC NetFlow profile" target="_parent" role="button">Download NetFlow profile</a></p>
+    <hr/>
+
+
+    <h3>Snort / Suricata Ruleset</h3>
+    <p>If you are using a network intrusion detection and prevention systems (IDS / IPS) like
+    <a href="https://www.snort.org/" title="Snort - Network Intrusion Detection &amp; Prevention System" target="_blank">Snort</a> or
+    <a href="https://suricata-ids.org/" title="Suricata IDS" target="_blank">Suricata</a> (or any other IDS that
+    supports the Snort / Suricata Ruleset format), you may use the CryptoIOC IDS Ruleset to identify network traffic
+    towards known cryptomining pools.</p>
+    <p>Note that there is an existing IDS rule to detect general traffic towards cryptocurrency mining pools, for details
+        see:<br/><a href="http://doc.emergingthreats.net/bin/view/Main/2024792" target="_blank" title="Emerging Threats">ET Policy Cryptocurrency Miner Checkin (sid:2024792)</a>.</p>
+    <p>Using the CryptoIOC ruleset's detection is based on connections to IP addresses and ports of known cryptominer pools, as such you will get more context information in the alert,
+        such as the mining pool identifier and the mined currency.</p>
+    <p>The IP addresses contained in the IDS ruleset are based on the DNS A records of known cryptominer pool domains. The addresses are resolved once per day.</p>
+    <p><a class="btn btn-primary" href="{{ url_for('api_ids') }}" title="download CryptoIOC IDS Ruleset for Snort / Suricata" target="_parent" role="button">Download IDS Ruleset</a></p>
 {% endblock%}

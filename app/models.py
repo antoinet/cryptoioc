@@ -38,7 +38,7 @@ class DnsCache(db.Model):
         Persist the user in the database.
         :return:
         """
-        self.timestamp = datetime.now()
+        self.timestamp = datetime.utcnow()
         db.session.add(self)
         db.session.commit()
 
@@ -85,4 +85,4 @@ class Pool(object):
             for row in reader:
                 domain, port, currency, comment = row
                 pools.append(Pool(domain, port, currency, comment))
-        return pools
+        return [x for x in pools if x.dns_cache]
