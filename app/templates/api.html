@@ -5,9 +5,10 @@
 {% block content %}
     <h1 class="mt-5">CryptoIOC API</h1>
 
-    <h3>Database dump (CSV)</h3>
-    <p>The CryptoIOC database dump is a simple CSV feed that contains all cryptominer pool IP address and port combinations currently known to CryptoIOC.
-    The CSV contains the following columns:</p>
+    <h3>Database dump</h3>
+    <p>The CryptoIOC database dump is a simple CSV feed that contains all cryptominer pool IP address and port combinations currently known to CryptoIOC. The dump is available either
+        in CSV or in JSON format.</p>
+    <p>The CSV contains the following columns:</p>
     <ul>
         <li>Domain name</li>
         <li>IP address</li>
@@ -16,8 +17,30 @@
         <li>Comments</li>
         <li>Last updated</li>
     </ul>
+    <p>The JSON is in the following form:</p>
+    <pre>
+        <code>
+[
+    {
+        "domain": "us-east.stratum.slushpool.com",
+        "port": 3333,
+        "currency": "btc",
+        "comment": "",
+        "ips": [
+            "34.207.252.164",
+            "34.230.31.195",
+            "52.90.128.18",
+            ...
+        ],
+        "timestamp": "2018-07-09 23:14:08"
+    },
+    ...
+]
+        </code>
+    </pre>
     <p>The IP addresses contained in the databse dump are based on the DNS A records of known cryptominer pool domains. The addresses are resolved once per day.</p>
-    <p><a class="btn btn-primary" href="{{ url_for('api_csv') }}" title="download CryptoIOC database dump as CSV file" target="_parent" role="button">Download CSV</a></p>
+    <p><a class="btn btn-primary" href="{{ url_for('api_csv') }}" title="download CryptoIOC database dump as CSV file" target="_parent" role="button">Download CSV</a>
+        <a class="btn btn-primary" href="{{ url_for('api_json') }}" title="download CryptoIOC database dump as JSON" target="_parent" role="button">Download JSON</a></p>
     <hr/>
 
     <h3>NetFlow Profile</h3>

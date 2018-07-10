@@ -107,7 +107,7 @@ def api_json():
     for pool in pools:
         result.append({
             'domain': pool.domain,
-            'port': pool.port,
+            'port': int(pool.port),
             'currency': pool.currency,
             'comment': pool.comment,
             'ips': pool.dns_cache.ips.split(','),
