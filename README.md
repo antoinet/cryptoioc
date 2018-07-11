@@ -1,32 +1,15 @@
-## References
- * https://medium.com/the-andela-way/how-i-developed-an-api-in-python-using-flask-4e388674f1
- * https://medium.com/the-andela-way/deploying-a-python-flask-app-to-heroku-41250bda27d0
- * https://github.com/jokamjohn/bucket_api_heroku/blob/f3f9380c069b5a0a5d5116f2bd0ae1882c90ec69/app/models.py
- * https://hub.docker.com/_/postgres/
- * https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xviii-deployment-on-heroku
- 
- 
-## local docker postgres
+# CryptoIOC
 
-```bash
-$ docker run --rm --name heroku-postgres -e POSTGRES_PASSWORD=password1 -d -p 5432:5432 postgres
-$ docker run -it --rm --link heroku-postgres:postgres postgres psql -h postgres -U postgres
-Password for user postgres:
-psql (10.1)
-Type "help" for help.
+CryptoIOC is an IOC sharing platform with the goal of sharing IP/port pairs used to communicate with cryptomining pools.
 
-postgres=# CREATE DATABASE cryptoioc;
-CREATE DATABASE
-postgres=# CREATE USER cryptoioc WITH ENCRYPTED PASSWORD 'password1';
-CREATE ROLE
-postgres=# GRANT ALL PRIVILEGES ON DATABASE cryptoioc TO cryptoioc;
-GRANT
-```
+Why? because an increasing number of malware programs install stealthy cryptominers on infected systems. Although
+communication to cryptomining pools is usually legitimate, it is also an indicator of compromise. The published IOCs can
+be used to monitor and detect network communication to cryptomining pools.
 
-## local dev environment
-```bash
-$ flask shell
->>> from app import db
->>> db.create_all()
->>> ...
-```
+The CryptoIOC website is currently running on the Heroku platform at the following URL: https://cryptoioc.herokuapp.com.
+
+
+## Contribute
+
+Contribute to this project by providing additional mining pool IOCs. The list of IOCs is maintained in CSV format in the
+file `pools.csv`. Please share your contributions by submitting a pull request, thanks!.

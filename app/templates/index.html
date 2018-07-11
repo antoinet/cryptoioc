@@ -7,10 +7,12 @@
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-3">CryptoIOC</h1>
-            <p>CryptoIOC has the goal of sharing IP/port pairs used to connect to cryptomining pools.</p>
-            <p><b>Why?</b> because more and more malware install a stealthy cryptominer. Infected systems are then (ab)used
-            and have their resources sucked to mine cryptocurrencies for miscreants.</p>
-            <p><a class="btn btn-primary btn-lg" href="{{ url_for('browse') }}" role="button">CryptoIOC database &raquo;</a></p>
+            <p>CryptoIOC is an IOC sharing platform with the goal of sharing IP/port pairs used to communicate with cryptomining pools.</p>
+
+            <p><i>Why?</i> because an increasing number of malware programs install stealthy cryptominers on infected systems. Although
+            communication to cryptomining pools is usually legitimate, it is also an indicator of compromise. The published IOCs can
+            be used to monitor and detect network connections to cryptomining pools.</p>
+            <p><a class="btn btn-primary btn-lg" href="{{ url_for('browse') }}" role="button">Browse the IOCs &raquo;</a></p>
         </div>
     </div>
 
@@ -26,14 +28,14 @@
             <div class="col-md-4">
                 <h2>API</h2>
                 <p>Download the CryptoIOC dataset to detect traffic to cryptomining pools in your network.
-                    The data set is available in various formats.</p>
+                    The data set is available in several formats.</p>
                 <p><a class="btn btn-secondary" href="{{ url_for('api') }}" role="button">View details &raquo;</a></p>
             </div>
             <div class="col-md-4">
                 <h2>Contribute</h2>
-                <p>Contribute to this project by providing additional mining pool domains. Fork the project on Github
-                and add your contributions to the file <kbd>pools.csv</kbd>.</p>
-                <p><a class="btn btn-secondary" href="https://github.com/antoinet/cryptoioc" role="button">Fork me &raquo;</a></p>
+                <p>Contribute to this project by providing additional mining pool IOCs. Fork the project on Github
+                and add your contributions via Pull Request.</p>
+                <p><a class="btn btn-secondary" href="https://github.com/antoinet/cryptoioc" target="_blank" role="button">Fork me on Github &raquo;</a></p>
             </div>
         </div>
         <hr>
