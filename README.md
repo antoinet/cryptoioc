@@ -4,7 +4,7 @@ CryptoIOC is an IOC sharing platform with the goal of sharing IP/port pairs used
 
 Why? because an increasing number of malware programs install stealthy cryptominers on infected systems. Although
 communication to cryptomining pools is usually legitimate, it is also an indicator of compromise. The published IOCs can
-be used to monitor and detect network communication to cryptomining pools.
+be used to monitor and detect network connections to cryptomining pools.
 
 The CryptoIOC website is currently running on the Heroku platform at the following URL: https://cryptoioc.herokuapp.com.
 
