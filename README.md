@@ -6,7 +6,7 @@ Why? because an increasing number of malware programs install stealthy cryptomin
 communication to cryptomining pools is usually legitimate, it is also an indicator of compromise. The published IOCs can
 be used to monitor and detect network connections to cryptomining pools.
 
-The CryptoIOC website is currently running on the Heroku platform at the following URL: https://cryptoioc.ch/
+The CryptoIOC website is running at the following URL: https://cryptoioc.ch/
 
 
 ## Contribute
