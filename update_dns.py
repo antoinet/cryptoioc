@@ -5,6 +5,9 @@ import dns.resolver
 from collections import OrderedDict
 from app.models import DnsCache, Pool
 
+custom_nameservers = ['8.8.8.8', '8.8.4.4']
+my_resolver = dns.resolver.Resolver()
+my_resolver.nameservers = custom_nameservers
 
 def get_ips_for_domain(domain):
     """
@@ -12,7 +15,7 @@ def get_ips_for_domain(domain):
     :param domain:
     :return:
     """
-    results = dns.resolver.query(domain, 'A')
+    results = my_resolver.query(domain, 'A')
     return [str(ip) for ip in results]
 
 
