@@ -1,0 +1,79 @@
+[
+  {
+    "ip": "216.116.96.2",
+    "domain": "nscl-01.tierzero.net",
+    "location": "Los Angeles",
+    "country": "US",
+    "comments": "Tierzero BIND"
+  },
+  {
+    "ip": "151.202.0.85",
+    "domain": "nyc2-qwest.bellatlantic.net",
+    "location": "New York",
+    "country": "US",
+    "comments": ""
+  },
+  {
+    "ip": "83.97.120.225",
+    "domain": "dns01.sceur.ch",
+    "location": "",
+    "country": "CH",
+    "comments": ""
+  },
+  {
+    "ip": "169.239.181.3",
+    "domain": "",
+    "location": "",
+    "country": "ZA",
+    "comments": ""
+  },
+  {
+    "ip": "80.248.153.194",
+    "domain": "l3.80-248-153-194.lsi.ru",
+    "location": "Leningradskiy",
+    "country": "RU",
+    "comments": ""
+  },
+  {
+    "ip": "101.110.36.163",
+    "domain": "",
+    "location": "",
+    "country": "JP",
+    "comments": ""
+  },
+  {
+    "ip": "202.46.42.130",
+    "domain": "ptr.cnsat.com.cn",
+    "location": "Shenzhen",
+    "country": "CN",
+    "comments": ""
+  },
+  {
+    "ip": "131.221.81.2",
+    "domain": "",
+    "location": "",
+    "country": "BR",
+    "comments": ""
+  },
+  {
+    "ip": "45.126.45.215",
+    "domain": "45-126-45-215.static.b2bwholesale.com.au",
+    "location": "Footscray",
+    "country": "AU",
+    "comments": ""
+  },
+  {
+    "ip": "41.57.109.169",
+    "domain": "",
+    "location": "Nairobi",
+    "country": "KE",
+    "comments": ""
+  },
+  {
+    "ip": "41.248.244.207",
+    "domain": "static41-207-244-248-244.adsl41-16.iam.net.ma",
+    "location": "Casablanca",
+    "country": "MA",
+    "comments": ""
+  }
+]

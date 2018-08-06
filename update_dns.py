@@ -2,12 +2,22 @@
 # -*- coding: utf-8 -*-
 
 import dns.resolver
+import json
 from collections import OrderedDict
 from app.models import DnsCache, Pool
 
-custom_nameservers = ['8.8.8.8', '8.8.4.4']
-my_resolver = dns.resolver.Resolver()
-my_resolver.nameservers = custom_nameservers
+
+def get_resolvers():
+    with open('dns-servers.json', 'r') as f:
+        servers = json.load(f)
+
+    resolvers = []
+    for ns in servers:
+        resolver = dns.resolver.Resolver()
+        resolver.nameservers = [ns['ip']]
+        resolvers.append(resolver)
+    return resolvers
+
 
 def get_ips_for_domain(domain):
     """
@@ -15,8 +25,14 @@ def get_ips_for_domain(domain):
     :param domain:
     :return:
     """
-    results = my_resolver.query(domain, 'A')
-    return [str(ip) for ip in results]
+    result = set()
+    for resolver in get_resolvers():
+        try:
+            ips = resolver.query(domain, 'A')
+        except dns.exception.DNSException:
+            print("Could not resolve '%s' using nameserver '%s'" % (domain, str(resolver.nameservers[0])))
+        result.update([str(ip) for ip in ips])
+    return result
 
 
 def retrieve_domains():
